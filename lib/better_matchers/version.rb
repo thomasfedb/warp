@@ -1,0 +1,3 @@
+module BetterMatchers
+  VERSION = "0.0.1"
+end
