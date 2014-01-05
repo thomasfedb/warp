@@ -1,7 +1,6 @@
 module ControllerHelpers
   def build_controller
     let(:controller_class) do
-      return super() if defined?(super)
       Class.new(ActionController::Metal).tap do |klass|
         klass.instance_eval do
           def helper_method(*_); end
@@ -35,15 +34,13 @@ module ControllerHelpers
   end
 
   def controller_action(&blk)
-    build_controller
-
     before do
       controller_class.send :define_method, :index do
         instance_eval(&blk)
         render nothing: true
       end
-    end
 
-    before { controller.dispatch(:index, request) }
+      controller.dispatch(:index, request)
+    end
   end
 end
