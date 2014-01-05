@@ -3,13 +3,33 @@ module ControllerHelpers
     let(:controller_class) do
       return super() if defined?(super)
       Class.new(ActionController::Metal).tap do |klass|
+        klass.instance_eval do
+          def helper_method(*_); end
+        end
+
         klass.include ActionController::Rendering
+        klass.include ActionController::Flash
+
         klass.send :cattr_accessor, :spec
         klass.spec = self
       end
     end
 
-    let(:controller) { controller_class.new }
+    let(:request) do
+      ActionDispatch::TestRequest.new(ActionDispatch::TestRequest::DEFAULT_ENV.dup).tap do |request|
+        request.class_eval do
+          def flash
+            @env[ActionDispatch::Flash::KEY] ||= ActionDispatch::Flash::FlashHash.new
+          end
+        end
+      end
+    end
+
+    let(:controller) do
+      controller_class.new.tap do |controller|
+        controller.instance_variable_set(:@_request, request)
+      end
+    end
   end
 
   def controller_action(&blk)
@@ -21,8 +41,6 @@ module ControllerHelpers
         render nothing: true
       end
     end
-
-    let(:request) { ActionDispatch::Request.new(ActionDispatch::TestRequest::DEFAULT_ENV.dup) }
 
     before { controller.dispatch(:index, request) }
   end
