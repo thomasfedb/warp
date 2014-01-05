@@ -18,7 +18,52 @@ And then execute:
 
 ## Usage
 
-TODO: Write usage instructions here
+### assigns(:key)
+
+Ensures that the specific assign is set:
+
+```ruby
+specify { expect(controller).to assign(:posts) }
+```
+
+### assigns(:key).with
+
+Ensures that the specific assign is set with the specified value:
+
+```ruby
+specify { expect(controller).to assign(:posts).with(posts) }
+```
+
+### assigns(:key).with_a
+
+Ensures that the specific assign is set with an instance of the specified class:
+
+```ruby
+specify { expect(controller).to assign(:post).with_a(Post) }
+```
+
+### assigns(:key).with_a_new
+
+Ensures that the specific assign is set with a instance of the specified class that is not persisted:
+
+```ruby
+specify { expect(controller).to assign(:post).with_a_new(Post) }
+```
+
+### set_flash(:key)
+
+Ensure that the specific flash key is set:
+
+```ruby
+specify { expect(controller).to set_flash(:notice) }
+```
+### set_flash(:key).to("expected value")
+
+Ensure that the specific flash key is set:
+
+```ruby
+specify { expect(controller).to set_flash(:notice).to("Your order has been processed.") }
+```
 
 ## Contributing
 
