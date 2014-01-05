@@ -1,5 +1,7 @@
 # Warp
 
+[![Build Status](https://travis-ci.org/thomasfedb/warp.png)](https://travis-ci.org/thomasfedb/warp)
+
 RSpec Matchers to simplify writing unit and feature tests for your Rails applications.
 
 Compatible with Ruby 1.9.2 and greater, and Rails 3.2 and greater.
