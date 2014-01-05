@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gemspec
+gem "warp", :path=>"../"
 
 gem "bundler", "~> 1.5.1"
 gem "rake"
