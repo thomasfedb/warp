@@ -1,5 +1,5 @@
 require "better_matchers/version"
 
-module BetterMatchers
-  # Your code goes here...
-end
+require "rspec"
+
+require "better_matchers/controller_matchers"
