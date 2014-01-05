@@ -37,7 +37,7 @@ module ControllerHelpers
     before do
       controller_class.send :define_method, :index do
         instance_eval(&blk)
-        render nothing: true
+        render text: ""
       end
 
       controller.dispatch(:index, request)
