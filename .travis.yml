@@ -9,5 +9,11 @@ gemfile:
   - gemfiles/rails-4.0
   - gemfiles/rails-4.1
   - Gemfile
+matrix:
+  exclude:
+    - rvm: 1.9.2
+      gemfile: gemfiles/rails-4.0
+    - rvm: 1.9.2
+      gemfile: gemfiles/rails-4.1
 bundler_args: --without tools
 script: bundle exec rspec
