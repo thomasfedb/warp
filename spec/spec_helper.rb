@@ -9,7 +9,7 @@ end
 require "active_support/all"
 require "action_controller"
 
-require "better_matchers"
+require "warp"
 
 Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
 

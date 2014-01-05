@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe BetterMatchers::ControllerMatchers::AssignMatcher do
+describe Warp::ControllerMatchers::AssignMatcher do
   build_controller
 
   subject { assign(:assign) }

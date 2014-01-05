@@ -1,4 +1,4 @@
-# BetterMatchers
+# Warp
 
 RSpec Matchers to simplify writing unit and feature tests for your Rails applications.
 
@@ -8,7 +8,7 @@ Compatible with Ruby 1.9.2 and greater, and Rails 3.2 and greater.
 
 Add this line to your application's Gemfile:
 
-    gem "better_matchers"
+    gem "warp"
 
 And then execute:
 

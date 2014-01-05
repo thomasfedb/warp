@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'better_matchers/version'
+require 'warp/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "better_matchers"
-  spec.version       = BetterMatchers::VERSION
+  spec.name          = "warp"
+  spec.version       = Warp::VERSION
   spec.authors       = ["Thomas Drake-Brockman"]
   spec.email         = ["thom@sfedb.com"]
-  spec.description   = %q{Better Rails matchers for your RSpec specs.}
-  spec.summary       = %q{Better Matchers provides matchers for testing your Rails application with RSpec.}
+  spec.description   = %q{Rails matchers for your RSpec specs.}
+  spec.summary       = %q{Warp provides matchers for testing your Rails application with RSpec.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

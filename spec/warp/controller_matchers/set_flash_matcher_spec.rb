@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe BetterMatchers::ControllerMatchers::SetFlashMatcher do
+describe Warp::ControllerMatchers::SetFlashMatcher do
   build_controller
 
   let(:flash_key) { [:notice, :error].sample }

@@ -1,4 +1,4 @@
-module BetterMatchers
+module Warp
   module ControllerMatchers
     class SetFlashMatcher
       include RSpec::Matchers::Composable

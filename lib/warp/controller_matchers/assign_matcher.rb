@@ -1,4 +1,4 @@
-module BetterMatchers
+module Warp
   module ControllerMatchers
     class AssignMatcher
       include RSpec::Matchers::Composable
