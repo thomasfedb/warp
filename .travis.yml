@@ -15,5 +15,7 @@ matrix:
       gemfile: gemfiles/rails-4.0
     - rvm: 1.9.2
       gemfile: gemfiles/rails-4.1
+    - rvm: 1.9.2
+      gemfile: Gemfile
 bundler_args: --without tools
 script: bundle exec rspec

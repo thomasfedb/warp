@@ -7,8 +7,8 @@ module ControllerHelpers
           def helper_method(*_); end
         end
 
-        klass.include ActionController::Rendering
-        klass.include ActionController::Flash
+        klass.send :include, ActionController::Rendering
+        klass.send :include, ActionController::Flash
 
         klass.send :cattr_accessor, :spec
         klass.spec = self
