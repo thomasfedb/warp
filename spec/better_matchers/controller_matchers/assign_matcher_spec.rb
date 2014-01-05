@@ -1,6 +1,44 @@
 require "spec_helper"
 
 describe BetterMatchers::ControllerMatchers::AssignMatcher do
+  build_controller
+
+  subject { assign(:assign) }
+
+  describe "#description" do
+    subject { super().matches?(controller); super().description }
+
+    specify { expect(subject).to eq "assign @assign" }
+  end
+
+  context "when assigned" do
+    controller_action do
+      @assign = Object.new
+    end
+
+    specify { expect(subject).to match(controller) }
+  
+    describe "#failure_message_when_negated" do
+      subject { super().matches?(controller); super().failure_message_when_negated }
+
+      specify { expect(subject).to eq "expected @assign to not be assigned" }
+    end
+  end
+
+  context "when not assigned" do
+    controller_action do
+      # no assign
+    end
+
+    specify { expect(subject).to_not match(controller) }
+    
+    describe "#failure_message" do
+      subject { super().matches?(controller); super().failure_message }
+
+      specify { expect(subject).to eq "expected @assign to be assigned" }
+    end
+  end
+
   describe "#with" do
     controller_action do
       @assign = spec.actual_assign_value
@@ -9,7 +47,7 @@ describe BetterMatchers::ControllerMatchers::AssignMatcher do
     let(:actual_assign_value) { "foobar" }
     let(:expected_assign_value) { "foobar" }
 
-    subject { assign(:assign).with(expected_assign_value) }
+    subject { super().with(expected_assign_value) }
 
     describe "#description" do
       subject { super().matches?(controller); super().description }
@@ -19,6 +57,12 @@ describe BetterMatchers::ControllerMatchers::AssignMatcher do
 
     context "with the right value" do
       specify { expect(subject).to match(controller) }
+    
+      describe "#failure_message_when_negated" do
+        subject { super().matches?(controller); super().failure_message_when_negated }
+
+        specify { expect(subject).to eq "expected @assign to not be assigned with #{expected_assign_value.inspect}" }
+      end
     end
 
     context "with the wrong value" do
@@ -31,12 +75,6 @@ describe BetterMatchers::ControllerMatchers::AssignMatcher do
 
         specify { expect(subject).to eq "expected @assign to be assigned with #{expected_assign_value.inspect} but was assigned with #{actual_assign_value.inspect}" }
       end
-    end
-    
-    describe "#failure_message_when_negated" do
-      subject { super().matches?(controller); super().failure_message_when_negated }
-
-      specify { expect(subject).to eq "expected @assign to not be assigned with #{expected_assign_value.inspect}" }
     end
   end
 
@@ -58,6 +96,12 @@ describe BetterMatchers::ControllerMatchers::AssignMatcher do
 
     context "with the right class" do
       specify { expect(subject).to match(controller) }
+        
+      describe "#failure_message_when_negated" do
+        subject { super().matches?(controller); super().failure_message_when_negated }
+
+        specify { expect(subject).to eq "expected @assign to not be assigned with an instance of #{expected_assign_class.name}" }
+      end
     end
 
     context "with the wrong class" do
@@ -71,12 +115,6 @@ describe BetterMatchers::ControllerMatchers::AssignMatcher do
         specify { expect(subject).to eq "expected @assign to be assigned with an instance of #{expected_assign_class.name} but was assigned with an instance of #{actual_assign_class.name}"
  }
       end
-    end
-      
-    describe "#failure_message_when_negated" do
-      subject { super().matches?(controller); super().failure_message_when_negated }
-
-      specify { expect(subject).to eq "expected @assign to not be assigned with an instance of #{expected_assign_class.name}" }
     end
   end
 
@@ -108,6 +146,12 @@ describe BetterMatchers::ControllerMatchers::AssignMatcher do
 
       context "with the right class" do
         specify { expect(subject).to match(controller) }
+
+        describe "#failure_message_when_negated" do
+          subject { super().matches?(controller); super().failure_message_when_negated }
+
+          specify { expect(subject).to eq "expected @assign to not be assigned with a new instance of #{expected_assign_class.name}" }
+        end
       end
 
       context "with a descendant class" do
@@ -116,6 +160,12 @@ describe BetterMatchers::ControllerMatchers::AssignMatcher do
         end
 
         specify { expect(subject).to match(controller) }
+
+        describe "#failure_message_when_negated" do
+          subject { super().matches?(controller); super().failure_message_when_negated }
+
+          specify { expect(subject).to eq "expected @assign to not be assigned with a new instance of #{expected_assign_class.name}" }
+        end 
       end
 
       context "with the wrong class" do
@@ -158,13 +208,6 @@ describe BetterMatchers::ControllerMatchers::AssignMatcher do
    }
         end
       end
-    end
-
-        
-    describe "#failure_message_when_negated" do
-      subject { super().matches?(controller); super().failure_message_when_negated }
-
-      specify { expect(subject).to eq "expected @assign to not be assigned with a new instance of #{expected_assign_class.name}" }
     end
   end
 end

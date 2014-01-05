@@ -35,9 +35,18 @@ module BetterMatchers
         return check_assign_with if assign_with
         return check_assign_with_a if assign_with_a
         return check_assign_with_a_new if assign_with_a_new
+        return check_assign
       end
       
       private
+
+      def check_assign
+        @description = "assign @#{assign_key}"
+        @failure_message = "expected @#{assign_key} to be assigned"
+        @failure_message_when_negated = "expected @#{assign_key} to not be assigned"
+
+        values_match?(false, assign_value.nil?)
+      end
 
       def check_assign_with
         @description = "assign @#{assign_key} with #{assign_with.inspect}"
