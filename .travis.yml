@@ -10,4 +10,4 @@ gemfile:
   - gemfiles/rails-4.1
   - Gemfile
 bundler_args: --without tools
-script: rspec
+script: bundle exec rspec
