@@ -20,7 +20,7 @@ And then execute:
 
 ## Usage
 
-### assigns(:key)
+### assigns(key)
 
 Ensures that the specific assign is set:
 
@@ -28,7 +28,7 @@ Ensures that the specific assign is set:
 specify { expect(controller).to assign(:posts) }
 ```
 
-### assigns(:key).with
+### assigns(key).with(object)
 
 Ensures that the specific assign is set with the specified value:
 
@@ -36,7 +36,7 @@ Ensures that the specific assign is set with the specified value:
 specify { expect(controller).to assign(:posts).with(posts) }
 ```
 
-### assigns(:key).with_a
+### assigns(key).with_a(klass)
 
 Ensures that the specific assign is set with an instance of the specified class:
 
@@ -44,7 +44,7 @@ Ensures that the specific assign is set with an instance of the specified class:
 specify { expect(controller).to assign(:post).with_a(Post) }
 ```
 
-### assigns(:key).with_a_new
+### assigns(key).with_a_new(klass)
 
 Ensures that the specific assign is set with a instance of the specified class that is not persisted:
 
@@ -52,14 +52,14 @@ Ensures that the specific assign is set with a instance of the specified class t
 specify { expect(controller).to assign(:post).with_a_new(Post) }
 ```
 
-### set_flash(:key)
+### set_flash(key)
 
 Ensure that the specific flash key is set:
 
 ```ruby
 specify { expect(controller).to set_flash(:notice) }
 ```
-### set_flash(:key).to("expected value")
+### set_flash(key).to(value)
 
 Ensure that the specific flash key is set:
 
