@@ -19,20 +19,27 @@ module Warp
       def matches?(actual)
         @controller = actual if actual.is_a?(ActionController::Metal)
 
-        if expected_flash_value
-          @description = "set flash[:#{flash_key}] to #{expected_flash_value.inspect}"
-          @failure_message = "expected flash[:#{flash_key}] to be set to #{expected_flash_value.inspect}"
-          @failure_message_when_negated = "expected flash[:#{flash_key}] to not be set to #{expected_flash_value.inspect}"
-          values_match?(expected_flash_value, flash_value)
-        else
-          @description = "set flash[:#{flash_key}]"
-          @failure_message = "expected flash[:#{flash_key}] to be set"
-          @failure_message_when_negated = "expected flash[:#{flash_key}] to not be set"
-          values_match?(false, flash_value.nil?)
-        end
+        return check_expected_value if expected_flash_value
+        return check_assigned
       end
 
       private
+
+      def check_expected_value
+        @description = "set flash[:#{flash_key}] to #{expected_flash_value.inspect}"
+        @failure_message = "expected flash[:#{flash_key}] to be set to #{expected_flash_value.inspect}"
+        @failure_message_when_negated = "expected flash[:#{flash_key}] to not be set to #{expected_flash_value.inspect}"
+
+        values_match?(expected_flash_value, flash_value)
+      end
+
+      def check_assigned
+        @description = "set flash[:#{flash_key}]"
+        @failure_message = "expected flash[:#{flash_key}] to be set"
+        @failure_message_when_negated = "expected flash[:#{flash_key}] to not be set"
+
+        values_match?(false, flash_value.nil?)
+      end
 
       def flash_value
         flash[flash_key]
