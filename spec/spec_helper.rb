@@ -17,4 +17,5 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.extend ControllerHelpers
+  config.extend WithContextsHelpers
 end

@@ -1,5 +1,7 @@
 module ControllerHelpers
-  def build_controller
+  def build_controller(name = :controller)
+    let(:controller_name) { name }
+
     let(:controller_class) do
       Class.new(ActionController::Metal).tap do |klass|
         klass.instance_eval do
@@ -26,7 +28,7 @@ module ControllerHelpers
       end
     end
 
-    let(:controller) do
+    let(name) do
       controller_class.new.tap do |controller|
         controller.instance_variable_set(:@_request, request)
       end
@@ -40,7 +42,7 @@ module ControllerHelpers
         render text: ""
       end
 
-      controller.dispatch(:index, request)
+      send(controller_name).dispatch(:index, request)
     end
   end
 end

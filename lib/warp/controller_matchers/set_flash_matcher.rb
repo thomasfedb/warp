@@ -6,8 +6,9 @@ module Warp
       attr_reader :flash_key, :expected_flash_value
       attr_reader :controller, :failure_message, :failure_message_when_negated, :description
 
-      def initialize(flash_key)
+      def initialize(flash_key, controller)
         @flash_key = flash_key
+        @controller = controller
       end
 
       def to(expected_flash_value)
@@ -15,8 +16,8 @@ module Warp
         self
       end
 
-      def matches?(controller)
-        @controller = controller
+      def matches?(actual)
+        @controller = actual if actual.is_a?(ActionController::Metal)
 
         if expected_flash_value
           @description = "set flash[:#{flash_key}] to #{expected_flash_value.inspect}"
@@ -43,7 +44,7 @@ module Warp
     end
 
     def set_flash(flash_key)
-      SetFlashMatcher.new(flash_key)
+      SetFlashMatcher.new(flash_key, controller)
     end
   end
 end

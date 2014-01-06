@@ -6,8 +6,9 @@ module Warp
       attr_reader :assign_key, :assign_with, :assign_with_a, :assign_with_a_new
       attr_reader :controller, :failure_message, :failure_message_when_negated, :description
 
-      def initialize(assign_key)
+      def initialize(assign_key, controller)
         @assign_key = assign_key
+        @controller = controller
       end
 
       def with(assign_eq)
@@ -26,7 +27,7 @@ module Warp
       end
       
       def matches?(actual)
-        @controller = actual if actual.is_a?(ActionController::Base)
+        @controller = actual if actual.is_a?(ActionController::Metal)
 
         if multiple_assertions?
           raise "Only one of .with, .with_a, and .with_a_new can be used with the assigns matcher."
@@ -86,7 +87,7 @@ module Warp
     end
 
     def assign(assign_key)
-      AssignMatcher.new(assign_key)
+      AssignMatcher.new(assign_key, controller)
     end
   end
 end
