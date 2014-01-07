@@ -18,4 +18,7 @@ matrix:
     - rvm: 1.9.2
       gemfile: Gemfile
 bundler_args: --without tools
+env:
+  global:
+    - TRAVIS_CI=1
 script: bundle exec rspec

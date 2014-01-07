@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem "simplecov", require: false
+gem "coveralls", require: false
+
 gem "rspec", git: "https://github.com/rspec/rspec.git"
 gem "rspec-core", git: "https://github.com/rspec/rspec-core.git"
 gem "rspec-expectations", git: "https://github.com/rspec/rspec-expectations.git"
