@@ -1,6 +1,7 @@
 # Warp
 
 [![Build Status](https://travis-ci.org/thomasfedb/warp.png)](https://travis-ci.org/thomasfedb/warp)
+[![Coverage Status](https://coveralls.io/repos/thomasfedb/warp/badge.png?branch=master)](https://coveralls.io/r/thomasfedb/warp?branch=master)
 [![Gem Version](https://badge.fury.io/rb/warp.png)](http://rubygems.org/gems/warp)
 [![Code Climate](https://codeclimate.com/github/thomasfedb/warp.png)](https://codeclimate.com/github/thomasfedb/warp)
 
