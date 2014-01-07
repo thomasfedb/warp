@@ -227,6 +227,30 @@ describe Warp::ControllerMatchers::AssignMatcher do
           end
         end
       end
+
+      context "multiple assertions" do
+        with_contexts do
+          context "with .with and .with_a" do
+            let(:matcher) { super().with(Object.new).with_a(Class.new) }
+          end
+
+          context "with .with_a and .with_a_new" do
+            let(:matcher) { super().with_a(Class.new).with_a_new(Class.new) }
+          end
+
+          context "with .with_a_new and .with" do
+            let(:matcher) { super().with_a_new(Class.new).with(Object.new) }
+          end
+
+          context "with .with, .with_a, and .with_a_new" do
+            let(:matcher) { super().with(Object.new).with_a(Class.new).with_a_new(Class.new) }
+          end
+
+          behaviour do
+            specify { expect{ subject }.to raise_error("Only one of .with, .with_a, and .with_a_new can be used with the assigns matcher.") }
+          end
+        end
+      end
     end
   end
 end
