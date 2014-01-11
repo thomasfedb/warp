@@ -2,8 +2,6 @@ module WithContextsHelpers
   class WithContextsBuilder
     attr_accessor :contexts, :examples, :group
 
-    delegate :let, :before, :after, :subject, to: :group
-
     def initialize(group)
       @contexts = {}
       @group = group
@@ -19,6 +17,18 @@ module WithContextsHelpers
 
     def behaviour(&blk)
       self.examples = blk
+    end
+
+    def let(*args, &blk)
+      group.let(*args, &blk)
+    end
+
+    def before(*args, &blk)
+      group.before(*args, &blk)
+    end
+
+    def after(*args, &blk)
+      group.after(*args, &blk)
     end
 
     def execute
