@@ -11,16 +11,37 @@ rvm:
   - 2.1.0
 
 gemfile:
-  - gemfiles/rails_3.2.gemfile
-  - gemfiles/rails_4.0.gemfile
-  - gemfiles/rails_4.1.gemfile
+  - gemfiles/rails_3.2_rspec_2.14.gemfile
+  - gemfiles/rails_3.2_rspec_2.99.0.beta1.gemfile
+  - gemfiles/rails_3.2_rspec_3.0.0.beta1.gemfile
+  - gemfiles/rails_3.2_rspec_master.gemfile
+  - gemfiles/rails_4.0_rspec_2.14.gemfile
+  - gemfiles/rails_4.0_rspec_2.99.0.beta1.gemfile
+  - gemfiles/rails_4.0_rspec_3.0.0.beta1.gemfile
+  - gemfiles/rails_4.0_rspec_master.gemfile
+  - gemfiles/rails_4.1.0.beta1_rspec_2.14.gemfile
+  - gemfiles/rails_4.1.0.beta1_rspec_2.99.0.beta1.gemfile
+  - gemfiles/rails_4.1.0.beta1_rspec_3.0.0.beta1.gemfile
+  - gemfiles/rails_4.1.0.beta1_rspec_master.gemfile
 
 matrix:
   exclude:
     - rvm: 1.9.2
-      gemfile: gemfiles/rails_4.0.gemfile
+      gemfile: gemfiles/rails_4.0_rspec_2.14.gemfile
     - rvm: 1.9.2
-      gemfile: gemfiles/rails_4.1.gemfile
+      gemfile: gemfiles/rails_4.0_rspec_2.99.0.beta1.gemfile
+    - rvm: 1.9.2
+      gemfile: gemfiles/rails_4.0_rspec_3.0.0.beta1.gemfile
+    - rvm: 1.9.2
+      gemfile: gemfiles/rails_4.0_rspec_master.gemfile
+    - rvm: 1.9.2
+      gemfile: gemfiles/rails_4.1.0.beta1_rspec_2.14.gemfile
+    - rvm: 1.9.2
+      gemfile: gemfiles/rails_4.1.0.beta1_rspec_2.99.0.beta1.gemfile
+    - rvm: 1.9.2
+      gemfile: gemfiles/rails_4.1.0.beta1_rspec_3.0.0.beta1.gemfile
+    - rvm: 1.9.2
+      gemfile: gemfiles/rails_4.1.0.beta1_rspec_master.gemfile
 
 bundler_args: --without tools
 
