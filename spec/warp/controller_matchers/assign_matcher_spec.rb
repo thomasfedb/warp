@@ -35,9 +35,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
 
         specify { expect(subject).to match(_controller) }
       
-        describe "#failure_message_when_negated" do
-          subject { super().failure_message_when_negated }
-
+        describe_failure_message_when_negated do
           specify { expect(subject).to eq "expected @assign to not be assigned" }
         end
       end
@@ -49,9 +47,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
 
         specify { expect(subject).to_not match(_controller) }
         
-        describe "#failure_message" do
-          subject { super().failure_message }
-
+        describe_failure_message do
           specify { expect(subject).to eq "expected @assign to be assigned" }
         end
       end
@@ -75,9 +71,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
         context "with the right value" do
           specify { expect(subject).to match(_controller) }
         
-          describe "#failure_message_when_negated" do
-            subject { super().failure_message_when_negated }
-
+          describe_failure_message_when_negated do
             specify { expect(subject).to eq "expected @assign to not be assigned with #{expected_assign_value.inspect}" }
           end
         end
@@ -87,9 +81,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
 
           specify { expect(subject).to_not match(_controller) }
           
-          describe "#failure_message" do
-            subject { super().failure_message }
-
+          describe_failure_message do
             specify { expect(subject).to eq "expected @assign to be assigned with #{expected_assign_value.inspect} but was assigned with #{actual_assign_value.inspect}" }
           end
         end
@@ -114,9 +106,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
         context "with the right class" do
           specify { expect(subject).to match(_controller) }
             
-          describe "#failure_message_when_negated" do
-            subject { super().failure_message_when_negated }
-
+          describe_failure_message_when_negated do
             specify { expect(subject).to eq "expected @assign to not be assigned with an instance of #{expected_assign_class.name}" }
           end
         end
@@ -126,9 +116,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
 
           specify { expect(subject).to_not match(_controller) }
           
-          describe "#failure_message" do
-            subject { super().failure_message }
-
+          describe_failure_message do
             specify { expect(subject).to eq "expected @assign to be assigned with an instance of #{expected_assign_class.name} but was assigned with an instance of #{actual_assign_class.name}"
      }
           end
@@ -164,9 +152,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
           context "with the right class" do
             specify { expect(subject).to match(_controller) }
 
-            describe "#failure_message_when_negated" do
-              subject { super().failure_message_when_negated }
-
+            describe_failure_message_when_negated do
               specify { expect(subject).to eq "expected @assign to not be assigned with a new instance of #{expected_assign_class.name}" }
             end
           end
@@ -178,9 +164,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
 
             specify { expect(subject).to match(_controller) }
 
-            describe "#failure_message_when_negated" do
-              subject { super().failure_message_when_negated }
-
+            describe_failure_message_when_negated do
               specify { expect(subject).to eq "expected @assign to not be assigned with a new instance of #{expected_assign_class.name}" }
             end 
           end
@@ -190,9 +174,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
 
             specify { expect(subject).to_not match(_controller) }
             
-            describe "#failure_message" do
-              subject { super().failure_message }
-
+            describe_failure_message do
               specify { expect(subject).to eq "expected @assign to be assigned with a new instance of #{expected_assign_class.name} but was assigned with a new instance of #{actual_assign_class.name}"
        }
             end
@@ -205,9 +187,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
           context "with the right class" do
             specify { expect(subject).to_not match(_controller) }
             
-            describe "#failure_message" do
-              subject { super().failure_message }
-
+            describe_failure_message do
               specify { expect(subject).to eq "expected @assign to be assigned with a new instance of #{expected_assign_class.name} but was assigned with a persisted instance of #{actual_assign_class.name}"
        }
             end
@@ -218,9 +198,7 @@ describe Warp::ControllerMatchers::AssignMatcher do
 
             specify { expect(subject).to_not match(_controller) }
             
-            describe "#failure_message" do
-              subject { super().failure_message }
-
+            describe_failure_message do
               specify { expect(subject).to eq "expected @assign to be assigned with a new instance of #{expected_assign_class.name} but was assigned with a persisted instance of #{actual_assign_class.name}"
        }
             end

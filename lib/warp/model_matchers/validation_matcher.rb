@@ -1,7 +1,6 @@
 module Warp
   module ModelMatchers
-    class ValidationMatcher
-      include RSpec::Matchers::Composable
+    class ValidationMatcher < Warp::Matcher
 
 
     end

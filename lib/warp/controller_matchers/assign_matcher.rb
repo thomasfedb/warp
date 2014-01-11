@@ -1,8 +1,6 @@
 module Warp
   module ControllerMatchers
-    class AssignMatcher
-      include RSpec::Matchers::Composable
-
+    class AssignMatcher < Warp::Matcher
       attr_reader :assign_key, :assign_with, :assign_with_a, :assign_with_a_new
       attr_reader :controller, :failure_message, :failure_message_when_negated, :description
 

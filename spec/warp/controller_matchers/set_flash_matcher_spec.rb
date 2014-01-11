@@ -39,9 +39,7 @@ describe Warp::ControllerMatchers::SetFlashMatcher do
 
         specify { expect(subject).to match(_controller) }
       
-        describe "#failure_message_when_negated" do
-          subject { super().failure_message_when_negated }
-
+        describe_failure_message_when_negated do
           specify { expect(subject).to eq "expected flash[:#{flash_key}] to not be set" }
         end
       end
@@ -49,9 +47,7 @@ describe Warp::ControllerMatchers::SetFlashMatcher do
       context "with no flash set" do
         specify { expect(subject).to_not match(_controller) }
       
-        describe "#failure_message" do
-          subject { super().failure_message }
-
+        describe_failure_message do
           specify { expect(subject).to eq "expected flash[:#{flash_key}] to be set" }
         end
       end
@@ -76,9 +72,7 @@ describe Warp::ControllerMatchers::SetFlashMatcher do
 
           specify { expect(subject).to match(_controller) }
         
-          describe "#failure_message_when_negated" do
-            subject { super().failure_message_when_negated }
-
+          describe_failure_message_when_negated do
             specify { expect(subject).to eq "expected flash[:#{flash_key}] to not be set to #{expected_flash_value.inspect}" }
           end
         end
@@ -88,9 +82,7 @@ describe Warp::ControllerMatchers::SetFlashMatcher do
 
           specify { expect(subject).to_not match(_controller) }
         
-          describe "#failure_message" do
-            subject { super().failure_message }
-
+          describe_failure_message do
             specify { expect(subject).to eq "expected flash[:#{flash_key}] to be set to #{expected_flash_value.inspect}" }
           end
         end

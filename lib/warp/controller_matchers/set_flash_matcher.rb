@@ -1,8 +1,6 @@
 module Warp
   module ControllerMatchers
-    class SetFlashMatcher
-      include RSpec::Matchers::Composable
-
+    class SetFlashMatcher < Warp::Matcher
       attr_reader :flash_key, :expected_flash_value
       attr_reader :controller, :failure_message, :failure_message_when_negated, :description
 

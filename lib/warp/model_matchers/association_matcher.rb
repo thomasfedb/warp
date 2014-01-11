@@ -1,6 +1,6 @@
 module Warp
   module ModelMatchers
-    class AssociationMatcher
+    class AssociationMatcher < Warp::Matcher
       attr_reader :macro, :key
       attr_reader :failure_message, :failure_message_when_negated, :description
 

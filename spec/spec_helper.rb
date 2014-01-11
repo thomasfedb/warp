@@ -23,6 +23,8 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.extend ControllerHelpers
+  config.extend FailureMessageHelpers
   config.extend ModelHelpers
   config.extend WithContextsHelpers
+  config.include MatchHelpers
 end

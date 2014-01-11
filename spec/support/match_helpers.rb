@@ -1,18 +1,30 @@
-RSpec::Matchers.define :match do |value|
-  match do |matcher|
-    @matcher = matcher
-    matcher.matches?(value)
+module MatchHelpers
+  class MatchMatcher
+    attr_reader :value, :matcher
+
+    def initialize(value)
+      @value = value
+    end
+
+    def matches?(matcher)
+      @matcher = matcher
+      matcher.matches?(value)
+    end
+
+    def description
+      "match #{value}"
+    end
+
+    def failure_message
+      "expect #{matcher} to match #{value} but did not"
+    end
+
+    def failure_message_when_negated
+      "expect #{matcher} to not match #{value} but did"
+    end
   end
 
-  description do
-    "match #{value}"
-  end
-
-  failure_message do
-    "expect #{@matcher} to match #{value} but did not"
-  end
-
-  failure_message_when_negated do
-    "expect #{@matcher} to not match #{value} but did"
+  def match(value)
+    MatchMatcher.new(value)
   end
 end

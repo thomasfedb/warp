@@ -69,9 +69,7 @@ describe Warp::ModelMatchers::AssociationMatcher do
 
               specify { expect(subject).to match(model_or_instance) }
             
-              describe "#failure_message_when_negated" do
-                subject { super().failure_message_when_negated }
-
+              describe_failure_message_when_negated do
                 specify { expect(subject).to eq "expected to not have association #{matcher_macro} :#{key}" }
               end
             end
@@ -82,9 +80,7 @@ describe Warp::ModelMatchers::AssociationMatcher do
 
               specify { expect(subject).to_not match(model_or_instance) }
             
-              describe "#failure_message" do
-                subject { super().failure_message }
-
+              describe_failure_message do
                 specify { expect(subject).to eq "expected to have association #{matcher_macro} :#{key}, but had #{actual_macro} :#{key}" }
               end
             end
@@ -95,9 +91,7 @@ describe Warp::ModelMatchers::AssociationMatcher do
 
             specify { expect(subject).to_not match(model_or_instance) }
           
-            describe "#failure_message" do
-              subject { super().failure_message }
-
+            describe_failure_message do
               specify { expect(subject).to eq "expected to have association #{matcher_macro} :#{key}" }
             end
           end

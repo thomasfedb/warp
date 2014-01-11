@@ -1,7 +1,6 @@
 module Warp
   module ModelMatchers
-    class AttributeMatcher
-      include RSpec::Matchers::Composable
+    class AttributeMatcher < Warp::Matcher
 
 
     end

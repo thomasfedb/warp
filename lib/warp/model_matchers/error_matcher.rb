@@ -1,7 +1,6 @@
 module Warp
   module ModelMatchers
-    class ErrorMatcher
-      include RSpec::Matchers::Composable
+    class ErrorMatcher < Warp::Matcher
 
 
     end
