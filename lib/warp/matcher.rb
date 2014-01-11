@@ -14,7 +14,9 @@ module Warp
       end
     end
 
-    # RSpec 2
+    # RSpec 2 and 3 have different methods
+    # that they call on matcher to get the
+    # failure messages.
     if RSpec::Version::STRING[0] == "2"
       def failure_message_for_should
         failure_message
