@@ -18,13 +18,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(spec)/})
   spec.require_paths = ["lib"]
 
-  # spec.add_runtime_dependency "rspec", ">= 2.14.0"
+  # TODO: When RSpec 3 is released.
+  # spec.add_runtime_dependency "rspec", "~> 3.0.0"
 
   spec.add_development_dependency "bundler", "~> 1.5.1"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "fuubar"
-
-  spec.add_development_dependency "activesupport"
-  spec.add_development_dependency "actionpack"
-  spec.add_development_dependency "activerecord"
 end

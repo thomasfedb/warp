@@ -18,6 +18,10 @@ describe Warp::ModelMatchers::AssociationMatcher do
     end
 
     behaviour do
+      if ActiveRecord::VERSION::STRING[0] == "4" && ActiveRecord::VERSION::STRING[3] != "0"
+        specify { expect{ have_and_belong_to_many(:foo) }.to raise_error(NotImplementedError) }
+      end
+
       with_contexts do
         let(:no_association_key) { :foobar }
 
@@ -45,12 +49,15 @@ describe Warp::ModelMatchers::AssociationMatcher do
           let(:wrong_association_key) { :bars }
         end
 
-        describe "#have_and_belong_to_many" do
-          let(:matcher) { have_and_belong_to_many(key) }
-          
-          let(:matcher_macro) { :has_and_belongs_to_many }
-          let(:association_key) { :qux }
-          let(:wrong_association_key) { :foo }
+        
+        unless ActiveRecord::VERSION::STRING[0] == "4" && ActiveRecord::VERSION::STRING[3] != "0"
+          describe "#have_and_belong_to_many" do
+            let(:matcher) { have_and_belong_to_many(key) }
+            
+            let(:matcher_macro) { :has_and_belongs_to_many }
+            let(:association_key) { :qux }
+            let(:wrong_association_key) { :foo }
+          end
         end
 
         behaviour do

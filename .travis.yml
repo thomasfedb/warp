@@ -1,24 +1,27 @@
 language: ruby
+
+env:
+  global:
+    - TRAVIS_CI=1
+
 rvm:
   - 1.9.2
   - 1.9.3
   - 2.0.0
   - 2.1.0
+
 gemfile:
-  - gemfiles/rails-3.2
-  - gemfiles/rails-4.0
-  - gemfiles/rails-4.1
-  - Gemfile
+  - gemfiles/rails_3.2
+  - gemfiles/rails_4.0
+  - gemfiles/rails_4.1
+
 matrix:
   exclude:
     - rvm: 1.9.2
-      gemfile: gemfiles/rails-4.0
+      gemfile: gemfiles/rails_4.0
     - rvm: 1.9.2
-      gemfile: gemfiles/rails-4.1
-    - rvm: 1.9.2
-      gemfile: Gemfile
+      gemfile: gemfiles/rails_4.1
+
 bundler_args: --without tools
-env:
-  global:
-    - TRAVIS_CI=1
+
 script: bundle exec rspec -b
