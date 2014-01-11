@@ -72,7 +72,7 @@ specify { expect(controller).to set_flash(:notice).to("Your order has been proce
 
 ### Model Matchers
 
-#### belongs_to(key)
+#### belongs_to(association)
 
 Ensures that a `belongs_to` association is present:
 
@@ -82,7 +82,7 @@ specify { expect(comment).to belongs_to(:post) }
 
 Works with either model classes or model objects.
 
-#### have_many(key)
+#### have_many(association)
 
 Ensures that a `has_many` association is present:
 
@@ -90,7 +90,7 @@ Ensures that a `has_many` association is present:
 specify { expect(post).to have_many(:comments) }
 ```
 
-#### have_one(key)
+#### have_one(association)
 
 Ensures that a `has_one` association is present:
 
@@ -98,7 +98,7 @@ Ensures that a `has_one` association is present:
 specify { expect(person).to have_one(:address) }
 ```
 
-#### have_and_belong_to_many(key)
+#### have_and_belong_to_many(association)
 
 Ensures that a `has_and_belongs_to_many` association is present:
 
@@ -107,6 +107,14 @@ specify { expect(group).to have_and_belong_to_many(:users) }
 ```
 
 This matcher is not avaliable on Rails 4.1+, as these versions of Rails will create a `has_many :though` association instead of a 'has_and_belongs_to_many' association.
+
+#### have_attribute(attribute)
+
+Checks if a certain attribute is present on a model. Works against models or model instances.
+
+```ruby
+specify { expect(user).to have_attribute(:name) }
+```
 
 ## Contributing
 
