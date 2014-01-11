@@ -106,6 +106,8 @@ Ensures that a `has_and_belongs_to_many` association is present:
 specify { expect(group).to have_and_belong_to_many(:users) }
 ```
 
+This matcher is not avaliable on Rails 4.1+, as these versions of Rails will create a `has_many :though` association instead of a 'has_and_belongs_to_many' association.
+
 ## Contributing
 
 1. Fork it
