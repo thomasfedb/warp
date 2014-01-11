@@ -1,6 +1,6 @@
 module Warp
   module ModelMatchers
-    class AssociationMatcher < Warp::Matcher
+    class AssociationMatcher < Warp::ModelMatchers::Matcher
       attr_reader :macro, :key
       attr_reader :failure_message, :failure_message_when_negated, :description
 
@@ -31,7 +31,6 @@ module Warp
           model_or_instance.class
         end
       end
-
     end
 
     def have_many(key)
