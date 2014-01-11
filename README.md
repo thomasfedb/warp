@@ -21,7 +21,9 @@ And then execute:
 
 ## Usage
 
-### assigns(key)
+### Controller Matchers
+
+#### assigns(key)
 
 Ensures that the specific assign is set:
 
@@ -29,7 +31,7 @@ Ensures that the specific assign is set:
 specify { expect(controller).to assign(:posts) }
 ```
 
-### assigns(key).with(object)
+#### assigns(key).with(object)
 
 Ensures that the specific assign is set with the specified value:
 
@@ -37,7 +39,7 @@ Ensures that the specific assign is set with the specified value:
 specify { expect(controller).to assign(:posts).with(posts) }
 ```
 
-### assigns(key).with_a(klass)
+#### assigns(key).with_a(klass)
 
 Ensures that the specific assign is set with an instance of the specified class:
 
@@ -45,7 +47,7 @@ Ensures that the specific assign is set with an instance of the specified class:
 specify { expect(controller).to assign(:post).with_a(Post) }
 ```
 
-### assigns(key).with_a_new(klass)
+#### assigns(key).with_a_new(klass)
 
 Ensures that the specific assign is set with a instance of the specified class that is not persisted:
 
@@ -53,19 +55,55 @@ Ensures that the specific assign is set with a instance of the specified class t
 specify { expect(controller).to assign(:post).with_a_new(Post) }
 ```
 
-### set_flash(key)
+#### set_flash(key)
 
 Ensure that the specific flash key is set:
 
 ```ruby
 specify { expect(controller).to set_flash(:notice) }
 ```
-### set_flash(key).to(value)
+#### set_flash(key).to(value)
 
 Ensure that the specific flash key is set:
 
 ```ruby
 specify { expect(controller).to set_flash(:notice).to("Your order has been processed.") }
+```
+
+### Model Matchers
+
+#### belongs_to(key)
+
+Ensures that a `belongs_to` association is present:
+
+```ruby
+specify { expect(comment).to belongs_to(:post) }
+```
+
+Works with either model classes or model objects.
+
+#### have_many(key)
+
+Ensures that a `has_many` association is present:
+
+```ruby
+specify { expect(post).to have_many(:comments) }
+```
+
+#### have_one(key)
+
+Ensures that a `has_one` association is present:
+
+```ruby
+specify { expect(person).to have_one(:address) }
+```
+
+#### have_and_belong_to_many(key)
+
+Ensures that a `has_and_belongs_to_many` association is present:
+
+```ruby
+specify { expect(group).to have_and_belong_to_many(:users) }
 ```
 
 ## Contributing

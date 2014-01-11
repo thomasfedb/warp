@@ -19,6 +19,7 @@ end
 
 require "active_support/all"
 require "action_controller"
+require "active_record"
 
 require "warp"
 
@@ -28,5 +29,6 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.extend ControllerHelpers
+  config.extend ModelHelpers
   config.extend WithContextsHelpers
 end

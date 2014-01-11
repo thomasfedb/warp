@@ -2,12 +2,18 @@ module WithContextsHelpers
   class WithContextsBuilder
     attr_accessor :contexts, :examples, :group
 
+    delegate :let, :before, :after, :subject, to: :group
+
     def initialize(group)
       @contexts = {}
       @group = group
     end
 
     def context(name, &blk)
+      self.contexts[name] = blk
+    end
+
+    def describe(name, &blk)
       self.contexts[name] = blk
     end
 
