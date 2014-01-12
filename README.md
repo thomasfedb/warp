@@ -21,7 +21,7 @@ And then execute:
 
 ## Usage
 
-### Controller Matchers
+### Assign Matchers
 
 #### assigns(key)
 
@@ -55,6 +55,8 @@ Ensures that the specific assign is set with a instance of the specified class t
 specify { expect(controller).to assign(:post).with_a_new(Post) }
 ```
 
+### Flash Matchers
+
 #### set_flash(key)
 
 Ensure that the specific flash key is set:
@@ -70,7 +72,7 @@ Ensure that the specific flash key is set:
 specify { expect(controller).to set_flash(:notice).to("Your order has been processed.") }
 ```
 
-### Model Matchers
+### Association Matchers
 
 #### belongs_to(association)
 
@@ -108,12 +110,107 @@ specify { expect(group).to have_and_belong_to_many(:users) }
 
 This matcher is not avaliable on Rails 4.1+, as these versions of Rails will create a `has_many :though` association instead of a 'has_and_belongs_to_many' association.
 
+### Attribute Matchers
+
 #### have_attribute(attribute)
 
 Checks if a certain attribute is present on a model. Works against models or model instances.
 
 ```ruby
 specify { expect(user).to have_attribute(:name) }
+```
+
+### Validation Matchers
+
+All validation matchers can be specified with, or without options to verify.
+
+#### validate_acceptance_of
+
+Ensures that a `validates_acceptance_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_acceptance_of(:terms) }
+```
+
+#### validate_absence_of
+
+Ensures that a `validates_absence_of` validator is present on the attribute.
+Only avaliable on Rails 4+.
+
+```ruby
+specify { expect(user).to validate_absence_of(:postcode, if: :non_us_address) }
+```
+
+#### validate_confirmation_of
+
+Ensures that a `validates_confirmation_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_confirmation_of(:password) }
+```
+
+#### validate_exclusion_of
+
+Ensures that a `validates_exclusion_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_exclusion_of(:age, in: 0..17) }
+```
+
+#### validate_format_of
+
+Ensures that a `validates_format_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_format_of(:postcode, with: /\d{5,8}/) }
+```
+
+#### validate_inclusion_of
+
+Ensures that a `validates_inclusion_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_inclusion_of(:role, in: ["develop", "design"]) }
+```
+
+#### validate_length_of
+
+Ensures that a `validates_length_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_length_of(:name, in: 5..25) }
+```
+
+#### validate_numericality_of
+
+Ensures that a `validates_numericality_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_numericality_of(:age) }
+```
+
+#### validate_presence_of
+
+Ensures that a `validates_presence_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_presence_of(:name) }
+```
+
+#### validate_association_of
+
+Ensures that a `validates_association_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_association_of(:profile) }
+```
+
+#### validate_uniqueness_of
+
+Ensures that a `validates_uniqueness_of` validator is present on the attribute.
+
+```ruby
+specify { expect(user).to validate_uniqueness_of(:email, scope: :company) }
 ```
 
 ## Contributing
