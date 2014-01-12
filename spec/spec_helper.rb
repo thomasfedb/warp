@@ -1,5 +1,12 @@
 require "bundler"
-require "byebug"
+
+unless ENV["TRAVIS_CI"]
+  if RUBY_VERSION[0] == "2"
+    require "byebug"
+  else
+    require "debugger"
+  end
+end
 
 require "simplecov"
 
