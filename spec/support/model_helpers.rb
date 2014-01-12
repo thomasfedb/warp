@@ -14,6 +14,11 @@ module ModelHelpers
           @columns ||= []
         end
 
+        def self.attribute_method?(method)
+          method = method.to_s.sub("=", "")
+          columns.any? {|c| c.name == method }
+        end
+
         def self.column(name, sql_type = nil, default = nil, null = true)
           columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
         end

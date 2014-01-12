@@ -17,7 +17,7 @@ module Warp
     # RSpec 2 and 3 have different methods
     # that they call on matcher to get the
     # failure messages.
-    if RSpec::Version::STRING[0] == "2"
+    if RSpec::Version::STRING[0] == "2" || RSpec::Version::STRING == "3.0.0.beta1"
       def failure_message_for_should
         failure_message
       end

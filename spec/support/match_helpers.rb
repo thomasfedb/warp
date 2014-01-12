@@ -1,5 +1,5 @@
 module MatchHelpers
-  class MatchMatcher
+  class MatchMatcher < Warp::Matcher
     attr_reader :value, :matcher
 
     def initialize(value)
