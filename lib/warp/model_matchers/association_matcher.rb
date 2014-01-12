@@ -1,35 +1,43 @@
 module Warp
   module ModelMatchers
     class AssociationMatcher < Warp::ModelMatchers::Matcher
-      attr_reader :macro, :key
-      attr_reader :failure_message, :failure_message_when_negated, :description
-
-      def initialize(macro, key)
-        @macro = macro
+      attr_reader :expected_macro, :key
+      
+      def initialize(expected_macro, key)
+        @expected_macro = expected_macro
         @key = key
       end
 
       def matches?(model_or_instance)
-        if association = model(model_or_instance).reflect_on_association(key)
-          actual_macro = association.macro
-          @failure_message = "expected to have association #{macro} :#{key}, but had #{actual_macro} :#{key}"
-          @failure_message_when_negated = "expected to not have association #{macro} :#{key}"
-          actual_macro == macro
+        @model_or_instance = model_or_instance
+
+        association && values_match?(expected_macro, assocation_macro)
+      end
+
+      def description
+        "have a #{expected_macro} association with :#{key}"
+      end
+
+      def failure_message
+        if association
+          "expected #{model_name} to #{description}, but had a #{assocation_macro} association with :#{key}"
         else
-          @failure_message = "expected to have association #{macro} :#{key}"
-          @failure_message_when_negated = "expected to not have association #{macro} :#{key}"
-          false
+          "expected #{model_name} to #{description}"
         end
+      end
+
+      def failure_message_when_negated
+        "expected #{model_name} to not #{description}"
       end
 
       private
 
-      def model(model_or_instance)
-        if model_or_instance.is_a? Class
-          model_or_instance
-        else
-          model_or_instance.class
-        end
+      def association
+        model.reflect_on_association(key)
+      end
+
+      def assocation_macro
+        association.macro
       end
     end
 

@@ -25,7 +25,7 @@ describe Warp::ModelMatchers::AttributeMatcher do
         specify { expect(subject).to match(model_or_instance) }
       
         describe_failure_message_when_negated do
-          specify { expect(subject).to eq "expected to not have attribute :#{attr_name}" }
+          specify { expect(subject).to eq "expected TestModel to not have attribute :#{attr_name}" }
         end
       end
 
@@ -35,7 +35,7 @@ describe Warp::ModelMatchers::AttributeMatcher do
         specify { expect(subject).to_not match(model_or_instance) }
       
         describe_failure_message do
-          specify { expect(subject).to eq "expected to have attribute :#{attr_name}" }
+          specify { expect(subject).to eq "expected TestModel to have attribute :#{attr_name}" }
         end
       end
     end
