@@ -74,12 +74,12 @@ specify { expect(controller).to set_flash(:notice).to("Your order has been proce
 
 ### Association Matchers
 
-#### belongs_to(association)
+#### belong_to(association)
 
-Ensures that a `belongs_to` association is present:
+Ensures that a `belong_to` association is present:
 
 ```ruby
-specify { expect(comment).to belongs_to(:post) }
+specify { expect(comment).to belong_to(:post) }
 ```
 
 Works with either model classes or model objects.
