@@ -14,6 +14,10 @@ module ModelHelpers
           @columns ||= []
         end
 
+        def self.attribute_names
+          @columns.map(&:name)
+        end
+
         def self.attribute_method?(method)
           method = method.to_s.sub("=", "")
           columns.any? {|c| c.name == method }

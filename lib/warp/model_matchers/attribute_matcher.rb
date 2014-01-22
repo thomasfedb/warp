@@ -24,11 +24,11 @@
       def failure_message_when_negated
         "expected #{model_name} to not #{description}"
       end
-      
+
       private
 
       def attributes
-        model.column_names.map(&:to_sym)
+        model.attribute_names.map(&:to_sym)
       end
     end
 
