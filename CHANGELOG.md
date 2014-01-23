@@ -1,3 +1,6 @@
+- 1.2.1
+  - Altered model matchers to be more robust against non-ActiveRecord objects.
+
 - 1.2.0
   - Updated model descriptions and failure messages.
 
