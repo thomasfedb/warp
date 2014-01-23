@@ -10,7 +10,7 @@ describe Warp::ModelMatchers::ValidationMatcher do
   let(:matcher) { send(matcher_method, attr_name) }
   let(:matcher_with_options) { send(matcher_method, attr_name, matcher_options) }
 
-  let(:validator_name) { matcher.validator_class.name }
+  let(:validator_names) { matcher.validator_classes.map(&:name).join(", or ") }
 
   with_contexts do
     context "with model" do
@@ -111,7 +111,7 @@ describe Warp::ModelMatchers::ValidationMatcher do
               specify { expect(subject).to_not match(model_or_instance) }
 
               describe_failure_message do
-                specify { expect(subject).to eq "expected TestModel to have validator #{validator_name} on :#{attr_name}" }
+                specify { expect(subject).to eq "expected TestModel to have validator #{validator_names} on :#{attr_name}" }
               end
             end
 
@@ -123,7 +123,7 @@ describe Warp::ModelMatchers::ValidationMatcher do
               specify { expect(subject).to match(model_or_instance) }
 
               describe_failure_message_when_negated do
-                specify { expect(subject).to eq "expected TestModel to not have validator #{validator_name} on :#{attr_name}" }
+                specify { expect(subject).to eq "expected TestModel to not have validator #{validator_names} on :#{attr_name}" }
               end
             end
           end
@@ -135,7 +135,7 @@ describe Warp::ModelMatchers::ValidationMatcher do
               specify { expect(subject).to_not match(model_or_instance) }
 
               describe_failure_message do
-                specify { expect(subject).to eq "expected TestModel to have validator #{validator_name} on :#{attr_name} with options #{matcher_options.inspect}" }
+                specify { expect(subject).to eq "expected TestModel to have validator #{validator_names} on :#{attr_name} with options #{matcher_options.inspect}" }
               end
             end
 
@@ -148,7 +148,7 @@ describe Warp::ModelMatchers::ValidationMatcher do
                 specify { expect(subject).to_not match(model_or_instance) }
 
                 describe_failure_message do
-                  specify { expect(subject).to eq "expected TestModel to have validator #{validator_name} on :#{attr_name} with options #{matcher_options.inspect}" }
+                  specify { expect(subject).to eq "expected TestModel to have validator #{validator_names} on :#{attr_name} with options #{matcher_options.inspect}" }
                 end
               end
 
@@ -160,7 +160,7 @@ describe Warp::ModelMatchers::ValidationMatcher do
                 specify { expect(subject).to match(model_or_instance) }
 
                 describe_failure_message_when_negated do
-                  specify { expect(subject).to eq "expected TestModel to not have validator #{validator_name} on :#{attr_name} with options #{matcher_options.inspect}" }
+                  specify { expect(subject).to eq "expected TestModel to not have validator #{validator_names} on :#{attr_name} with options #{matcher_options.inspect}" }
                 end
               end
             end

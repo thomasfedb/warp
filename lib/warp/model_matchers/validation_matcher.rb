@@ -2,7 +2,7 @@ module Warp
   module ModelMatchers
     class ValidationMatcher < Warp::ModelMatchers::Matcher
       VALIDATORS = {
-        accptance: [ActiveModel::Validations::AcceptanceValidator],
+        acceptance: [ActiveModel::Validations::AcceptanceValidator],
         confirmation: [ActiveModel::Validations::ConfirmationValidator],
         exclusion: [ActiveModel::Validations::ExclusionValidator],
         format: [ActiveModel::Validations::FormatValidator],
