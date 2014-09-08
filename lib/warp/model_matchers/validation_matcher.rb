@@ -80,14 +80,16 @@ module Warp
         display_options = options.first
         options = display_options.try(:dup) || {}
 
-        case validator
-        when :uniqueness
-          options = {case_sensitive: true}.merge(options)
-        when :acceptance
-          options = {allow_nil: true, accept: "1"}.merge(options)
+        if options.empty?
+          options = nil
+        else
+          case validator
+          when :uniqueness
+            options = {case_sensitive: true}.merge(options)
+          when :acceptance
+            options = {allow_nil: true, accept: "1"}.merge(options)
+          end
         end
-
-        options = nil if options.empty?
 
         ValidationMatcher.new(attr_name, validator_classes, options, display_options)
       end
