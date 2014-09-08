@@ -116,14 +116,26 @@ describe Warp::ModelMatchers::ValidationMatcher do
             end
 
             context "with a matching validation" do
-              before do
-                model.send(validation_method, attr_name, validation_base_options)
-              end
+              with_contexts do
+                context "with no options" do
+                  before do
+                    model.send(validation_method, attr_name, validation_base_options)
+                  end
+                end
 
-              specify { expect(subject).to match(model_or_instance) }
+                context "with options" do
+                  before do
+                    model.send(validation_method, attr_name, matcher_options)
+                  end
+                end
 
-              describe_failure_message_when_negated do
-                specify { expect(subject).to eq "expected TestModel to not have validator #{validator_names} on :#{attr_name}" }
+                behaviour do
+                  specify { expect(subject).to match(model_or_instance) }
+
+                  describe_failure_message_when_negated do
+                    specify { expect(subject).to eq "expected TestModel to not have validator #{validator_names} on :#{attr_name}" }
+                  end
+                end
               end
             end
           end
