@@ -1,67 +1,19 @@
-class V
-  def initialize(*version_parts)
-    @version_parts = version_parts
-  end
+["3.2", "4.0", "4.1"].each do |rails|
+  ["2.99", "3.0", "3.1"].each do |rspec|
+    appraise "rails-#{rails}-rspec-#{rspec}" do
+      rails_v = "~> #{rails}"
+      rspec_v = "~> #{rspec}"
 
-  def self.[](version_string)
-    self.new(*version_string.split("."))
-  end
+      gem "activesupport", rails_v, require: "active_support/all"
+      gem "actionpack", rails_v, require: "action_controller"
+      gem "activerecord", rails_v, require: "active_record"
+      gem "actionview", rails_v, require: "action_view" if rails == "4.1"
 
-  def gem_version
-    case @version_parts.size
-    when 2
-      "~> " + human_version
-    when 3, 4
-      human_version
-    else
-      raise Exception, "cannot generate gem version for #{human_version}"
-    end
-  end
-
-  def human_version
-    @version_parts.join(".")
-  end
-
-  def git?
-    @version_parts.size == 1
-  end
-
-  def branch
-    @version_parts[0]
-  end
-
-  def major
-    @version_parts[0]
-  end
-
-  def minor
-    git? ? nil : @version_parts[1]
-  end
-
-  def mm
-    [major, minor].join(".")
-  end
-
-  def mm?(version)
-    mm == version
-  end
-end
-
-[V["3.2"], V["4.0"], V["4.1.0.beta1"]].each do |rails|
-  [V["2.14"], V["2.99.0.beta1"], V["3.0.0.beta1"], V["master"]].each do |rspec|
-    appraise "rails-#{rails.human_version}-rspec-#{rspec.human_version}" do
-      gem "activesupport", rails.gem_version, require: "active_support/all"
-      gem "actionpack", rails.gem_version, require: "action_controller"
-      gem "activerecord", rails.gem_version, require: "active_record"
-      gem "actionview", rails.gem_version, require: "action_view" if rails.mm?("4.1")
-
-      ["rspec", "rspec-core", "rspec-expectations", "rspec-mocks", "rspec-support"].each do |rspec_gem|
-        if rspec.git?
-          gem rspec_gem, git: "https://github.com/rspec/#{rspec_gem}.git", branch: rspec.branch
-        elsif rspec_gem != "rspec-support" || rspec.mm?("3.0")
-          gem rspec_gem, rspec.gem_version
-        end
-      end
+      gem "rspec", rspec_v
+      gem "rspec-core", rspec_v
+      gem "rspec-expectations", rspec_v
+      gem "rspec-mocks", rspec_v
+      gem "rspec-support", rspec_v unless rspec == "2.99"
     end
   end
 end
