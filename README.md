@@ -7,7 +7,7 @@
 
 RSpec Matchers to simplify writing unit and feature tests for your Rails applications.
 
-Compatible with Ruby 1.9.2 and greater, Rails 3.2 and greater, and RSpec 2.14.1 and greater.
+Compatible with Ruby 1.9.2 and greater, Rails 3.2 and greater, and RSpec 2.99 and greater.
 
 ## Installation
 
