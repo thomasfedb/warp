@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Warp::VERSION
   spec.authors       = ["Thomas Drake-Brockman"]
   spec.email         = ["thom@sfedb.com"]
-  spec.description   = %q{Rails matchers for your RSpec specs.}
-  spec.summary       = %q{Warp provides matchers for testing your Rails application with RSpec.}
-  spec.homepage      = ""
+  spec.summary       = "Awesome RSpec matchers for testing your Rails applications."
+  spec.description   = "Warp provides a selection of inteligent RSpec matchers for your model, controller and feature specifications."
+  spec.homepage      = "https://github.com/thomasfedb/warp"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
