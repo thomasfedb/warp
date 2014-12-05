@@ -1,13 +1,18 @@
+[![Build Status](https://img.shields.io/travis/thomasfedb/warp.svg?style=flat-square)](https://travis-ci.org/thomasfedb/warp)
+[![Coverage Status](https://img.shields.io/coveralls/thomasfedb/warp.svg?style=flat-square)](https://coveralls.io/r/thomasfedb/warp?branch=master)
+[![Gem Version](https://img.shields.io/gem/v/warp.svg?style=flat-square)](http://rubygems.org/gems/warp)
+[![Code Climate](https://img.shields.io/codeclimate/github/thomasfedb/warp.svg?style=flat-square)](https://codeclimate.com/github/thomasfedb/warp)
+
 # Warp
 
-[![Build Status](https://travis-ci.org/thomasfedb/warp.png)](https://travis-ci.org/thomasfedb/warp)
-[![Coverage Status](https://coveralls.io/repos/thomasfedb/warp/badge.png?branch=master)](https://coveralls.io/r/thomasfedb/warp?branch=master)
-[![Gem Version](https://badge.fury.io/rb/warp.png)](http://rubygems.org/gems/warp)
-[![Code Climate](https://codeclimate.com/github/thomasfedb/warp.png)](https://codeclimate.com/github/thomasfedb/warp)
+Warp provides a selection of inteligent RSpec matchers for your model, controller and feature specifications.
 
-RSpec Matchers to simplify writing unit and feature tests for your Rails applications.
+Warp's matchers are written to be intuitive, easy to use, and to avoid testing Rails itself. The matchers also take advantage of RSpec's [composing matchers](http://www.rubydoc.info/gems/rspec-expectations/frames#Composing_Matchers) wherever possible.
 
-Compatible with Ruby 1.9.2 and greater, Rails 3.2 and greater, and RSpec 2.99 and greater.
+Compatible with:
+- Ruby 1.9.2 and greater
+- Rails 3.2 and greater
+- RSpec 2.99 and greater
 
 ## Installation
 
@@ -216,8 +221,8 @@ specify { expect(user).to validate_uniqueness_of(:email, scope: :company) }
 ## Contributing
 
 1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
+2. Create a branch (`git checkout -b super-foo`)
 3. Add your feature and specs.
-4. Commit your changes (`git commit -am 'Add some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
+4. Commit your changes (`git commit -am 'Extra-super foo-matic.'`)
+5. Push to the branch (`git push origin super-foo`)
 6. Create new Pull Request
