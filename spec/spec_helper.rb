@@ -8,15 +8,15 @@ unless ENV["TRAVIS_CI"]
   end
 end
 
-require "simplecov"
-
 if ENV["TRAVIS_CI"]
+  require "simplecov"
   require "coveralls"
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-end
 
-SimpleCov.start do
-  add_filter "/spec/"
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+
+  SimpleCov.start do
+    add_filter "/spec/"
+  end
 end
 
 if ENV["TRAVIS_CI"]
