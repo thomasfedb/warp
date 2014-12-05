@@ -25,6 +25,14 @@ else
   Bundler.require(:default, :tools)
 end
 
+if ActionPack.respond_to?(:version) && ActionPack.version.to_s =~ /^4\.2/
+  module Rails
+    def self.env
+      "default_env"
+    end
+  end
+end
+
 Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
 
 RSpec.configure do |config|
