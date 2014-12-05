@@ -1,5 +1,5 @@
 ["3.2", "4.0", "4.1", "4.2.rc1"].each do |rails|
-  ["2.14", "2.99", "3.0", "3.1"].each do |rspec|
+  ["2.14", "2.99", "3.1"].each do |rspec|
     appraise "rails-#{rails}-rspec-#{rspec}" do
       rails_v = "~> #{rails}"
       rspec_v = "~> #{rspec}"
