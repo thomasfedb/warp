@@ -13,10 +13,6 @@ gem "actionpack", "~> 4.1", :require => "action_controller"
 gem "activerecord", "~> 4.1", :require => "active_record"
 gem "actionview", "~> 4.1", :require => "action_view"
 gem "rspec", "~> 3.0"
-gem "rspec-core", "~> 3.0"
-gem "rspec-expectations", "~> 3.0"
-gem "rspec-mocks", "~> 3.0"
-gem "rspec-support", "~> 3.0"
 
 group :tools do
   gem "guard"
