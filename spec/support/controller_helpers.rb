@@ -11,7 +11,6 @@ module ControllerHelpers
         klass.send :include, ActionController::Rendering
         klass.send :include, ActionController::Flash
         klass.send :include, AbstractController::Rendering
-        klass.send :include, ActionController::Rendering
 
         klass.send :cattr_accessor, :spec
         klass.spec = self
