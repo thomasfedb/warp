@@ -1,3 +1,9 @@
+- 1.2.3
+  - Now compatible with Rails 4.2.
+
+- 1.2.2
+  - Fixed issue with model validation matchers failing when validation has configuration present.
+
 - 1.2.1
   - Altered model matchers to be more robust against non-ActiveRecord objects.
 
