@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Warp::ControllerMatchers::SetFlashMatcher do
+describe Warp::ControllerMatchers::SetFlashMatcher, type: :controller do
   with_contexts do
     context "with implicit controller" do
       build_controller(:controller)

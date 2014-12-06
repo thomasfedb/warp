@@ -1,3 +1,5 @@
+require "warp/matcher"
+
 module Warp
   module ControllerMatchers
     class AssignMatcher < Warp::Matcher

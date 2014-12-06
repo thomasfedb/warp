@@ -1,3 +1,5 @@
+require "warp/model_matchers/matcher"
+
 module Warp
   module ModelMatchers
     class ValidationMatcher < Warp::ModelMatchers::Matcher

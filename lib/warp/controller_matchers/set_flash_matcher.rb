@@ -1,3 +1,5 @@
+require "warp/matcher"
+
 module Warp
   module ControllerMatchers
     class SetFlashMatcher < Warp::Matcher

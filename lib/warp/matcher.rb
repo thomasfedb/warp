@@ -1,3 +1,5 @@
+require "rspec"
+
 module Warp
   class Matcher
     # Composable matchers are new in RSpec 3.

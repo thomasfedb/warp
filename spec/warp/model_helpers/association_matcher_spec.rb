@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Warp::ModelMatchers::AssociationMatcher do
+describe Warp::ModelMatchers::AssociationMatcher, type: :model do
   build_model do
     belongs_to :foo
     has_many :bars

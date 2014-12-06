@@ -1,3 +1,5 @@
+require "warp/model_matchers/matcher"
+
 module Warp
   module ModelMatchers
     class AssociationMatcher < Warp::ModelMatchers::Matcher
