@@ -16,5 +16,6 @@ gem "activerecord-nulldb-adapter", require: false
 group :tools do
   gem "guard"
   gem "guard-rspec"
-  gem "byebug"
+  gem "byebug", platform: :ruby_20
+  gem "debugger", platform: :ruby_19
 end
