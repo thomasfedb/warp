@@ -1,8 +1,5 @@
 require "warp/version"
 
-require "rspec"
-
-require "warp/matcher"
-
+require "warp/action_matchers"
 require "warp/controller_matchers"
 require "warp/model_matchers"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Warp::ModelMatchers::ValidationMatcher do
+describe Warp::ModelMatchers::ValidationMatcher, type: :model do
   build_model do
     column :foo
   end

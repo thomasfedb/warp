@@ -33,6 +33,9 @@ if ActionPack.respond_to?(:version) && ActionPack.version.to_s =~ /^4\.2/
   end
 end
 
+require "activerecord-nulldb-adapter"
+ActiveRecord::Base.establish_connection adapter: :nulldb
+
 Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
 
 RSpec.configure do |config|

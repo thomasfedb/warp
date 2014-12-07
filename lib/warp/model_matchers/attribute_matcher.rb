@@ -1,4 +1,6 @@
-  module Warp
+require "warp/model_matchers/matcher"
+
+module Warp
   module ModelMatchers
     class AttributeMatcher < Warp::ModelMatchers::Matcher
       attr_reader :attr_name

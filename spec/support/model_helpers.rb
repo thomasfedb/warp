@@ -2,6 +2,8 @@ module ModelHelpers
   def build_model(&blk)
     let(:model) do
       Class.new(ActiveRecord::Base) do
+        attr_accessor :id
+        
         def self.name
           "TestModel"
         end
@@ -27,7 +29,7 @@ module ModelHelpers
           columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
         end
 
-        instance_eval(&blk)
+        instance_eval(&blk) if blk
       end
     end
   end

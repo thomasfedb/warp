@@ -1,3 +1,5 @@
+require "warp/matcher"
+
 module Warp
   module ModelMatchers
     class Matcher < Warp::Matcher
