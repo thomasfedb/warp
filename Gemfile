@@ -11,6 +11,8 @@ gem "fuubar"
 gem "simplecov", require: false
 gem "coveralls", require: false
 
+gem "activerecord-nulldb-adapter", require: false
+
 group :tools do
   gem "guard"
   gem "guard-rspec"
