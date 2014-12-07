@@ -53,17 +53,29 @@ module Warp
     end
 
     def setup_hook
-      self.hook = Module.new
+      if Module.method_defined?(:prepend)
+        self.hook = Module.new
 
-      hook.send(:define_method, method) do |*args|
-        if Warp::Instrument.for(self.class, __method__).enabled?
-          Warp::Instrument.for(self.class, __method__).log(args)
+        hook.send(:define_method, method) do |*args|
+          if Warp::Instrument.for(self.class, __method__).enabled?
+            Warp::Instrument.for(self.class, __method__).log(args)
+          end
+
+          super(*args)
         end
 
-        super(*args)
-      end
+        klass.prepend(hook)
+      else
+        original_method = klass.instance_method(method)
 
-      klass.prepend(hook)
+        klass.send(:define_method, method) do |*args|
+          if Warp::Instrument.for(self.class, __method__).enabled?
+            Warp::Instrument.for(self.class, __method__).log(args)
+          end
+
+          original_method.bind(self).call(*args)
+        end
+      end
     end
   end
 end
