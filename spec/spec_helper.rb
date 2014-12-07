@@ -25,7 +25,7 @@ else
   Bundler.require(:default, :tools)
 end
 
-if ActionPack.respond_to?(:version) && ActionPack.version.to_s =~ /^4\.2/
+if defined?(Rails) && !Rails.respond_to?(:env)
   module Rails
     def self.env
       "default_env"
