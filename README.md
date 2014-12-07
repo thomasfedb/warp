@@ -218,6 +218,16 @@ Ensures that a `validates_uniqueness_of` validator is present on the attribute.
 specify { expect(user).to validate_uniqueness_of(:email, scope: :company) }
 ```
 
+### Creation Matchers
+
+#### creates
+
+Ensures that a record is created.
+
+```ruby
+specify { expect{post :create, params}.to create(Post) }
+```
+
 ## Contributing
 
 1. Fork it
