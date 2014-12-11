@@ -1,3 +1,11 @@
+- 1.3.1
+  - Fixed issue where model creation matcher would unconditionally pass on subsequent matches.
+
+- 1.3.0
+  - Matchers are now only included into relevant spec types.
+  - Matchers can now be individually required.
+  - Added model creation matcher.
+
 - 1.2.3
   - Now compatible with Rails 4.2.
 
