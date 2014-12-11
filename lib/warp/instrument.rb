@@ -16,7 +16,7 @@ module Warp
       end
     end
 
-    attr_accessor :klass, :method, :hook, :enabled, :calls
+    attr_accessor :klass, :method, :enabled, :calls
 
     def initialize(klass, method)
       self.klass = klass
@@ -58,7 +58,7 @@ module Warp
 
     def setup_hook
       if Module.method_defined?(:prepend)
-        self.hook = Module.new
+        hook = Module.new
 
         hook.send(:define_method, method) do |*args|
           if Warp::Instrument.for(self.class, __method__).enabled?
