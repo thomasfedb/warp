@@ -3,10 +3,13 @@ require "spec_helper"
 describe Warp::Instrument do
   let(:klass) { Class.new }
   let(:method) { :foo }
+  let(:result) { Object.new }
   let(:instrument) { Warp::Instrument.for(klass, method) }
 
   before do
-    klass.send(:define_method, method) {|*_| return nil }
+    klass.class_eval { cattr_accessor :result }
+    klass.result = result
+    klass.send(:define_method, method) {|*_| return result }
   end
 
   describe ".for" do
@@ -44,7 +47,7 @@ describe Warp::Instrument do
     end
 
     context "when a call has been logged" do
-      let(:args) { [{baz: :quz}] }
+      let(:args) { [12, {baz: :quz}] }
 
       before do
         instrument.run do
@@ -52,7 +55,7 @@ describe Warp::Instrument do
         end
       end
 
-      specify { expect(subject).to eq [args] }
+      specify { expect(subject).to eq [[args, result]] }
     end
   end
 end
