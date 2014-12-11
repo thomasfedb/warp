@@ -1,20 +1,38 @@
 require "spec_helper"
 
 describe Warp::ActionMatchers::CreateMatcher do
-  build_model
+  build_model do
+    column :foo
+
+    validates :foo, presence: true
+  end
+
+  before { Warp::Instrument.for(model, Warp::ActionMatchers::CreateMatcher::CREATE_METHOD).calls << Object.new }
 
   subject { create(model) }
 
-  context "when created with #create" do
-    let(:block) { -> { model.create({}) } }
+  with_contexts do
+    context "when created with #create" do
+      let(:block) { -> { model.create(params) } }
+    end
 
-    specify { expect(subject).to match block }
-  end
+    context "when created with #save" do
+      let(:block) { -> { model.new(params).save } }
+    end
 
-  context "when created with #save" do
-    let(:block) { -> { model.new.save } }
+    behaviour do
+      context "with a valid record" do
+        let(:params) { {foo: "bar"} } 
 
-    specify { expect(subject).to match block }
+        specify { expect(subject).to match block }
+      end
+
+      context "with an invalid record" do
+        let(:params) { {} }
+        
+        specify { expect(subject).to_not match block }
+      end
+    end
   end
 
   context "when nothing created" do

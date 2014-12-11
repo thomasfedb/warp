@@ -23,6 +23,7 @@ module Warp
 
         instrument = Warp::Instrument.for(model, CREATE_METHOD)
 
+        instrument.reset
         instrument.run { actual.call }
 
         instrument.calls.size > 0

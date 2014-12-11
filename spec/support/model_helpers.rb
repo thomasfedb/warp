@@ -25,8 +25,13 @@ module ModelHelpers
           columns.any? {|c| c.name == method }
         end
 
-        def self.column(name, sql_type = nil, default = nil, null = true)
-          columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
+        def self.column(name, sql_type = "varchar(255)", default = nil, null = true)
+          if ActiveRecord::ConnectionAdapters::AbstractAdapter.method_defined?(:lookup_cast_type)
+            cast_type = ActiveRecord::ConnectionAdapters::AbstractAdapter.new(nil, nil, nil).lookup_cast_type(sql_type)
+            columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, cast_type, sql_type.to_s, null)
+          else
+            columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
+          end
         end
 
         instance_eval(&blk) if blk

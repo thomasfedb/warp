@@ -24,6 +24,14 @@ describe Warp::Instrument do
     end
   end
 
+  describe "#reset" do
+    before { instrument.calls << Object.new }
+
+    subject { instrument.reset }
+
+    specify { expect{subject}.to change{instrument.calls}.to([]) }
+  end
+
   describe "#run" do
     specify { expect{|blk| instrument.run(&blk) }.to yield_control }
   end

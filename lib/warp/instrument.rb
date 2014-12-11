@@ -28,6 +28,10 @@ module Warp
       self.class.send(:register, self)
     end
 
+    def reset
+      self.calls = []
+    end
+
     def run
       enable
       yield
