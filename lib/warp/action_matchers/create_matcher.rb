@@ -17,9 +17,7 @@ module Warp
       end
 
       def matches?(actual)
-        unless actual.respond_to?(:call)
-          raise "The create matcher can only match against callables."
-        end
+        check_callable!(actual)
 
         instrument = Warp::Instrument.for(model, CREATE_METHOD)
 
