@@ -220,12 +220,20 @@ specify { expect(user).to validate_uniqueness_of(:email, scope: :company) }
 
 ### Creation Matchers
 
-#### creates
+#### create
 
 Ensures that a record is created.
 
 ```ruby
 specify { expect{post :create, params}.to create(Post) }
+```
+
+#### destroy
+
+Ensures that a record is destroyed.
+
+```ruby
+specify { expect{delete :destroy, id: id}.to destroy(Post) }
 ```
 
 ## Contributing
