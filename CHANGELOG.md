@@ -1,3 +1,6 @@
+- 1.3.2
+  - Added model deletion matcher.
+
 - 1.3.1
   - Fixed issue where model creation matcher would unconditionally pass on subsequent matches.
 
