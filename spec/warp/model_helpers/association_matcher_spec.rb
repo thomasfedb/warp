@@ -1,11 +1,13 @@
 require "spec_helper"
 
 describe Warp::ModelMatchers::AssociationMatcher, type: :model do
-  build_model do
-    belongs_to :foo
-    has_many :bars
-    has_one :baz
-    has_and_belongs_to_many :qux
+  let(:model) do
+    JamJar.model do
+      belongs_to :foo
+      has_many :bars
+      has_one :baz
+      has_and_belongs_to_many :qux
+    end
   end
 
   with_contexts do

@@ -4,11 +4,11 @@ source "https://rubygems.org"
 
 gem "bundler"
 gem "appraisal"
+gem "jamjar"
 gem "rake"
 gem "fuubar"
 gem "simplecov", :require => false
 gem "coveralls", :require => false
-gem "activerecord-nulldb-adapter", :require => false
 gem "activesupport", "~> 4.2.rc1", :require => "active_support/all"
 gem "actionpack", "~> 4.2.rc1", :require => "action_controller"
 gem "activerecord", "~> 4.2.rc1", :require => "active_record"

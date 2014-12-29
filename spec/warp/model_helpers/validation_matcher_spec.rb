@@ -1,8 +1,10 @@
 require "spec_helper"
 
 describe Warp::ModelMatchers::ValidationMatcher, type: :model do
-  build_model do
-    column :foo
+  let(:model) do
+    JamJar.model do
+      column :foo, :string
+    end
   end
 
   let(:attr_name) { :foo }

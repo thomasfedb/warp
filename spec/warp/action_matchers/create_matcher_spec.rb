@@ -1,10 +1,12 @@
 require "spec_helper"
 
 describe Warp::ActionMatchers::CreateMatcher do
-  build_model do
-    column :foo
+  let(:model) do
+    JamJar.model do
+      column :foo, :string
 
-    validates :foo, presence: true
+      validates :foo, presence: true
+    end
   end
 
   before { Warp::Instrument.for(model, Warp::ActionMatchers::CreateMatcher::CREATE_METHOD).calls << Object.new }
