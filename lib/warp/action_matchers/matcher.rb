@@ -10,6 +10,10 @@ module Warp
           raise "#{self.class.name} can only match against callables."
         end
       end
+
+      def model_name
+        model.model_name.to_s
+      end
     end
   end
 end

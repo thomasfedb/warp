@@ -3,11 +3,11 @@ require "warp/instrument"
 
 module Warp
   module ActionMatchers
-    class CreateMatcher < Warp::ActionMatchers::Matcher
-      if ActiveRecord::Base.private_method_defined?(:_create_record)
-        CREATE_METHOD = :_create_record
+    class DestroyMatcher < Warp::ActionMatchers::Matcher
+      if ActiveRecord::Base.private_method_defined?(:destroy_row)
+        DESTROY_METHOD = :destroy_row
       else
-        CREATE_METHOD = :create
+        DESTROY_METHOD = :destroy
       end
 
       attr_reader :model
@@ -19,7 +19,7 @@ module Warp
       def matches?(actual)
         check_callable!(actual)
 
-        instrument = Warp::Instrument.for(model, CREATE_METHOD)
+        instrument = Warp::Instrument.for(model, DESTROY_METHOD)
 
         instrument.reset
         instrument.run { actual.call }
@@ -28,20 +28,20 @@ module Warp
       end
 
       def description
-        "create a #{model_name}"
+        "destroy a #{model_name}"
       end
 
       def failure_message
-        "expected a #{model_name} to be created"
+        "expected a #{model_name} to be destroyed"
       end
 
       def failure_message_when_negated
-        "expected no #{model_name} to be created"
+        "expected no #{model_name} to be destroyed"
       end
     end
 
-    def create(model)
-      CreateMatcher.new(model)
+    def destroy(model)
+      DestroyMatcher.new(model)
     end
   end
 end

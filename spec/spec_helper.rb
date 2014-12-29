@@ -33,17 +33,13 @@ if defined?(Rails) && !Rails.respond_to?(:env)
   end
 end
 
-require "activerecord-nulldb-adapter"
-ActiveRecord::Base.establish_connection adapter: :nulldb
-
 Dir[File.expand_path("../support/**/*.rb", __FILE__)].each {|f| require f }
 
 RSpec.configure do |config|
-  config.order = 'random'
+  config.order = "random"
 
   config.extend ControllerHelpers
   config.extend FailureMessageHelpers
-  config.extend ModelHelpers
   config.extend WithContextsHelpers
   config.include MatchHelpers
 end

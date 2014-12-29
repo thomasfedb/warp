@@ -16,7 +16,7 @@ module Warp
       end
 
       def model_name
-        model.name
+        model.model_name.to_s
       end
     end
   end
