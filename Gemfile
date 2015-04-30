@@ -16,6 +16,6 @@ gem "coveralls", require: false
 group :tools do
   gem "guard"
   gem "guard-rspec"
-  gem "byebug", platform: [:ruby_20, :ruby_21]
+  gem "byebug", platform: [:ruby_20, :ruby_21, :ruby_22]
   gem "debugger", platform: :ruby_19
 end
