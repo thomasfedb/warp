@@ -10,7 +10,7 @@ Warp provides a selection of inteligent RSpec matchers for your model, controlle
 Warp's matchers are written to be intuitive, easy to use, and to avoid testing Rails itself. The matchers also take advantage of RSpec's [composing matchers](http://www.rubydoc.info/gems/rspec-expectations/frames#Composing_Matchers) wherever possible.
 
 Compatible with:
-- Ruby 1.9.2 and greater
+- Ruby 1.9.3 and greater
 - Rails 3.2 and greater
 - RSpec 2.99 and greater
 
@@ -218,7 +218,7 @@ Ensures that a `validates_uniqueness_of` validator is present on the attribute.
 specify { expect(user).to validate_uniqueness_of(:email, scope: :company) }
 ```
 
-### Creation Matchers
+### Action Matchers
 
 #### create
 
