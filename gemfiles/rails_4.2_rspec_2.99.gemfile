@@ -9,9 +9,9 @@ gem "rake"
 gem "fuubar"
 gem "simplecov", :require => false
 gem "coveralls", :require => false
-gem "activesupport", "~> 4.0", :require => "active_support/all"
-gem "actionpack", "~> 4.0", :require => "action_controller"
-gem "activerecord", "~> 4.0", :require => "active_record"
+gem "activesupport", "~> 4.2", :require => "active_support/all"
+gem "actionpack", "~> 4.2", :require => "action_controller"
+gem "activerecord", "~> 4.2", :require => "active_record"
 gem "rspec", "~> 2.99"
 
 group :tools do
