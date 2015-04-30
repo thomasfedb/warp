@@ -29,7 +29,7 @@ gemfile:
 
 bundler_args: --without tools
 
-install:
+before_install:
   - gem uninstall bundler
   - gem install bundler
 
