@@ -9,7 +9,7 @@ describe Warp::ActionMatchers::CreateMatcher do
     end
   end
 
-  before { Warp::Instrument.for(model, Warp::ActionMatchers::CreateMatcher::CREATE_METHOD).calls << Object.new }
+  before { Warp::Instrument.for(model, Warp::ActionMatchers::CreateMatcher.instrument_method).calls << Object.new }
 
   subject { create(model) }
 
@@ -24,14 +24,14 @@ describe Warp::ActionMatchers::CreateMatcher do
 
     behaviour do
       context "with a valid record" do
-        let(:params) { {foo: "bar"} } 
+        let(:params) { {foo: "bar"} }
 
         specify { expect(subject).to match block }
       end
 
       context "with an invalid record" do
         let(:params) { {} }
-        
+
         specify { expect(subject).to_not match block }
       end
     end

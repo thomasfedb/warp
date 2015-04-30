@@ -5,7 +5,7 @@ describe Warp::ActionMatchers::DestroyMatcher do
 
   let!(:instance) { model.create }
 
-  before { Warp::Instrument.for(model, Warp::ActionMatchers::DestroyMatcher::DESTROY_METHOD).calls << Object.new }
+  before { Warp::Instrument.for(model, Warp::ActionMatchers::DestroyMatcher.instrument_method).calls << Object.new }
 
   subject { destroy(model) }
 
@@ -18,7 +18,7 @@ describe Warp::ActionMatchers::DestroyMatcher do
       let(:block) { -> { model.destroy_all } }
     end
 
-    behaviour do        
+    behaviour do
       specify { expect(subject).to match block }
     end
   end
