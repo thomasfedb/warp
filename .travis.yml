@@ -29,4 +29,9 @@ gemfile:
 
 bundler_args: --without tools
 
+install:
+  - gem uninstall bundler
+  - gem install bundler
+
+
 script: bundle exec rspec -b
