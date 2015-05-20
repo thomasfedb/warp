@@ -228,6 +228,14 @@ Ensures that a record is created.
 specify { expect{post :create, params}.to create(Post) }
 ```
 
+#### update
+
+Ensures that a record is updated.
+
+```ruby
+specify { expect{post :update, params}.to update(Post) }
+```
+
 #### destroy
 
 Ensures that a record is destroyed.

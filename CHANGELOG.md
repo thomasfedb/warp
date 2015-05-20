@@ -1,3 +1,6 @@
+- 1.3.3
+  - Added model update matcher.
+
 - 1.3.2
   - Added model deletion matcher.
 

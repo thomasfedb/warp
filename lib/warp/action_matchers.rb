@@ -3,6 +3,7 @@ unless defined?(ActiveModel)
 end
 
 require "warp/action_matchers/create_matcher"
+require "warp/action_matchers/update_matcher"
 require "warp/action_matchers/destroy_matcher"
 
 RSpec.configure do |config|
