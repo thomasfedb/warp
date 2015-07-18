@@ -12,7 +12,7 @@ Warp's matchers are written to be intuitive, easy to use, and to avoid testing R
 Compatible with:
 - Ruby 1.9.3 and greater
 - Rails 3.2 and greater
-- RSpec 2.99 and greater
+- RSpec 3.0.0 and greater
 
 ## Installation
 

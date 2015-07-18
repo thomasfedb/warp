@@ -3,12 +3,9 @@
 source "https://rubygems.org"
 
 gem "bundler"
-gem "appraisal"
-gem "jamjar"
 gem "rake"
+gem "jamjar"
 gem "fuubar"
-gem "simplecov", :require => false
-gem "coveralls", :require => false
 gem "activesupport", "~> 4.1", :require => "active_support/all"
 gem "actionpack", "~> 4.1", :require => "action_controller"
 gem "activerecord", "~> 4.1", :require => "active_record"
@@ -16,8 +13,7 @@ gem "actionview", "~> 4.1", :require => "action_view"
 gem "rspec", "~> 3.1"
 
 group :tools do
-  gem "guard"
-  gem "guard-rspec"
+  gem "appraisal"
   gem "byebug", :platform => [:ruby_20, :ruby_21, :ruby_22]
   gem "debugger", :platform => :ruby_19
 end

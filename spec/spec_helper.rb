@@ -9,17 +9,6 @@ unless ENV["TRAVIS_CI"]
 end
 
 if ENV["TRAVIS_CI"]
-  require "simplecov"
-  require "coveralls"
-
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-
-  SimpleCov.start do
-    add_filter "/spec/"
-  end
-end
-
-if ENV["TRAVIS_CI"]
   Bundler.require
 else
   Bundler.require(:default, :tools)
