@@ -1,3 +1,9 @@
+- 1.4.0
+  - Dropped support for RSpec 2.
+  - Assignment matchers handle nil values better.
+  - Refactored assignment matchers.
+  - Refactored instrumentation.
+
 - 1.3.3
   - Added model update matcher.
 
