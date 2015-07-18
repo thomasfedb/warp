@@ -3,10 +3,16 @@ require "warp/matcher"
 module Warp
   module ActionMatchers
     class Matcher < Warp::Matcher
+      attr_reader :model
+
+      def initialize(model)
+        @model = model
+      end
+
       def matches?(actual)
         check_callable!(actual)
 
-        instrument = Warp::Instrument.for(model, self.class.instrument_method)
+        instrument = Warp::Instrument.for(model, instrument_method)
 
         instrument.reset
         instrument.run { actual.call }

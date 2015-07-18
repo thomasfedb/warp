@@ -9,7 +9,7 @@ describe Warp::ActionMatchers::UpdateMatcher do
     end
   end
 
-  before { Warp::Instrument.for(model, Warp::ActionMatchers::UpdateMatcher.instrument_method).calls << Object.new }
+  before { Warp::Instrument.for(model, Warp::ActionMatchers::UpdateMatcher.new(Object.new).send(:instrument_method)).calls << Object.new }
 
   let(:instance) { model.create(foo: "bar") }
 

@@ -5,7 +5,7 @@ describe Warp::ActionMatchers::DestroyMatcher do
 
   let!(:instance) { model.create }
 
-  before { Warp::Instrument.for(model, Warp::ActionMatchers::DestroyMatcher.instrument_method).calls << Object.new }
+  before { Warp::Instrument.for(model, Warp::ActionMatchers::DestroyMatcher.new(Object.new).send(:instrument_method)).calls << Object.new }
 
   subject { destroy(model) }
 

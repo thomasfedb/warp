@@ -4,20 +4,6 @@ require "warp/instrument"
 module Warp
   module ActionMatchers
     class UpdateMatcher < Warp::ActionMatchers::Matcher
-      def self.instrument_method
-        if ActiveRecord::Base.private_method_defined?(:_create_record)
-          :_update_record
-        else
-          :update
-        end
-      end
-
-      attr_reader :model
-
-      def initialize(model)
-        @model = model
-      end
-
       def description
         "update a #{model_name}"
       end
@@ -28,6 +14,12 @@ module Warp
 
       def failure_message_when_negated
         "expected no #{model_name} to be updated"
+      end
+
+      private
+
+      def instrument_method
+        ActiveRecord::Base.private_method_defined?(:_update_record) ? :_update_record : :update
       end
     end
 

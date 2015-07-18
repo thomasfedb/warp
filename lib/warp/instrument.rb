@@ -12,7 +12,7 @@ module Warp
       def register(instrument)
         @@registry ||= {}
         @@registry[instrument.klass] ||= {}
-        @@registry[instrument.klass][instrument.method] = instrument        
+        @@registry[instrument.klass][instrument.method] = instrument
       end
     end
 
@@ -43,7 +43,7 @@ module Warp
     end
 
     def log(args)
-      calls << args
+      calls << args if enabled?
     end
 
     private
@@ -57,32 +57,14 @@ module Warp
     end
 
     def setup_hook
-      if Module.method_defined?(:prepend)
-        hook = Module.new
+      original_method = klass.instance_method(method)
 
-        hook.send(:define_method, method) do |*args|
-          result = super(*args)
+      klass.send(:define_method, method) do |*args|
+        result = original_method.bind(self).call(*args)
 
-          if Warp::Instrument.for(self.class, __method__).enabled?
-            Warp::Instrument.for(self.class, __method__).log([args, result])
-          end
+        Warp::Instrument.for(self.class, __method__).log([args, result])
 
-          return result
-        end
-
-        klass.prepend(hook)
-      else
-        original_method = klass.instance_method(method)
-
-        klass.send(:define_method, method) do |*args|
-          result = original_method.bind(self).call(*args)
-
-          if Warp::Instrument.for(self.class, __method__).enabled?
-            Warp::Instrument.for(self.class, __method__).log([args, result])
-          end
-
-          return result
-        end
+        result
       end
     end
   end
