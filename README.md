@@ -1,6 +1,5 @@
-[![Build Status](https://img.shields.io/travis/thomasfedb/warp.svg?style=flat-square)](https://travis-ci.org/thomasfedb/warp)
-[![Coverage Status](https://img.shields.io/coveralls/thomasfedb/warp.svg?style=flat-square)](https://coveralls.io/r/thomasfedb/warp?branch=master)
 [![Gem Version](https://img.shields.io/gem/v/warp.svg?style=flat-square)](http://rubygems.org/gems/warp)
+[![Build Status](https://img.shields.io/travis/thomasfedb/warp.svg?style=flat-square)](https://travis-ci.org/thomasfedb/warp)
 [![Code Climate](https://img.shields.io/codeclimate/github/thomasfedb/warp.svg?style=flat-square)](https://codeclimate.com/github/thomasfedb/warp)
 
 # Warp
