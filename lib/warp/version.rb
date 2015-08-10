@@ -1,8 +1,8 @@
 module Warp
   module VERSION
     MAJOR = 1
-    MINOR = 3
-    PATCH = 3
+    MINOR = 4
+    PATCH = 0
 
     BETA = nil
 
