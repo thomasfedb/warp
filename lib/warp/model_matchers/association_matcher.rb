@@ -4,7 +4,7 @@ module Warp
   module ModelMatchers
     class AssociationMatcher < Warp::ModelMatchers::Matcher
       attr_reader :expected_macro, :key
-      
+
       def initialize(expected_macro, key)
         @expected_macro = expected_macro
         @key = key
@@ -56,11 +56,7 @@ module Warp
     end
 
     def have_and_belong_to_many(key)
-      if ActiveRecord::VERSION::STRING[0] == "4" && ActiveRecord::VERSION::STRING[3] != "0"
-        raise NotImplementedError, "In Rail 4.1+ the has_and_belongs_to_many helper produces a has_many :through association."
-      else
-        AssociationMatcher.new(:has_and_belongs_to_many, key)
-      end
+      AssociationMatcher.new(:has_and_belongs_to_many, key)
     end
   end
 end
