@@ -1,3 +1,6 @@
+- 1.5.0
+  - Reinstated HABTM matcher for Rails 4.1+
+
 - 1.4.0
   - Dropped support for RSpec 2.
   - Assignment matchers handle nil values better.
